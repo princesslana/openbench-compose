@@ -1,0 +1,12 @@
+FROM python:3.10.0-buster
+
+RUN apt-get update \
+ && apt-get install -y curl
+
+RUN pip3 install requests
+
+RUN curl https://sh.rustup.rs -sSf | sh -s -- -y
+#RUN curl https://raw.githubusercontent.com/AndyGrant/OpenBench/master/Client/Client.py -o Client.py
+COPY Client.py Client.py
+COPY run_client.sh run_client.sh
+CMD ./run_client.sh

@@ -1,0 +1,19 @@
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile.web
+    ports:
+      - 8080:8080
+    volumes:
+      - ./db.sqlite3:/OpenBench/db.sqlite3
+  client:
+    scale: 2
+    build:
+      context: .
+      dockerfile: Dockerfile.client
+    volumes:
+      - ./syzygy:/syzygy:ro
+    links:
+      - web
+

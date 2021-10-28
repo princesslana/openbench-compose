@@ -1,0 +1,10 @@
+FROM python:3.10.0-buster
+
+RUN pip3 install Django==3.0.5 django-htmlmin django-ipware requests
+
+RUN git clone https://github.com/AndyGrant/OpenBench /OpenBench
+WORKDIR /OpenBench
+
+COPY config.py /OpenBench/OpenBench/config.py
+COPY run_server.sh run_server.sh
+CMD ./run_server.sh
