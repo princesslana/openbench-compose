@@ -282,8 +282,9 @@ def scale_time_control(workload, nps):
     inc   = 0.0  if inc   is None else inc.lstrip('+')
 
     # Scale the time based on this machines NPS
-    base = float(base) * int(workload['test']['nps']) / nps
-    inc  = float(inc ) * int(workload['test']['nps']) / nps
+    # Scaling removed for compose based local setup
+    base = float(base) #* int(workload['test']['nps']) / nps
+    inc  = float(inc ) #* int(workload['test']['nps']) / nps
 
     # Format the time control for cutechess
     if moves is None: return '%.2f+%.2f' % (base, inc)
@@ -769,7 +770,6 @@ def build_cutechess_command(arguments, workload, dev_name, base_name, nps):
     time_control = scale_time_control(workload, nps)
 
     args = (
-        'movecount=3 score=400', 'movenumber=40 movecount=8 score=10',
         int(time.time()), variant, concurrency, games,
         dev_name, time_control, dev_options, dev_name.rstrip('.exe'),
         base_name, time_control, base_options, base_name.rstrip('.exe'),

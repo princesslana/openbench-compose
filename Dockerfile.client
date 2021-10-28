@@ -6,7 +6,7 @@ RUN apt-get update \
 RUN pip3 install requests
 
 RUN curl https://sh.rustup.rs -sSf | sh -s -- -y
-#RUN curl https://raw.githubusercontent.com/AndyGrant/OpenBench/master/Client/Client.py -o Client.py
+
 COPY Client.py Client.py
 COPY run_client.sh run_client.sh
 CMD ./run_client.sh
