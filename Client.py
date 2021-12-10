@@ -756,7 +756,7 @@ def build_cutechess_command(arguments, workload, dev_name, base_name, nps):
     flags += '-engine dir=Engines/ cmd=./%s proto=uci tc=%s%s name=%s '
     flags += '-engine dir=Engines/ cmd=./%s proto=uci tc=%s%s name=%s '
     flags += '-openings file=Books/%s format=%s order=random plies=16 '
-    flags += '-pgnout PGNs/%s_vs_%s '
+    #flags += '-pgnout PGNs/%s_vs_%s '
 
     #if SYZYGY_WDL_PATH and workload['test']['syzygy_adj'] != 'DISABLED':
     #   flags += '-tb %s' % (SYZYGY_WDL_PATH.replace('\\', '\\\\'))
@@ -774,7 +774,7 @@ def build_cutechess_command(arguments, workload, dev_name, base_name, nps):
         dev_name, time_control, dev_options, dev_name.rstrip('.exe'),
         base_name, time_control, base_options, base_name.rstrip('.exe'),
         book_name, book_name.split('.')[-1],
-        dev_name.rstrip('.exe'), base_name.rstrip('.exe')
+        #dev_name.rstrip('.exe'), base_name.rstrip('.exe')
     )
 
     if IS_LINUX:
@@ -815,9 +815,10 @@ def run_and_parse_cutechess(arguments,  workload, concurrency, command):
         if not line.startswith('Score of'):
             continue
 
-        # Only report scores after every eight games
         score = list(map(int, score_reason.split()[0:5:2]))
-        if ((sum(score) - sum(sent)) % 8 != 0): continue
+
+        # Only report scores after every eight games
+        #if ((sum(score) - sum(sent)) % 8 != 0): continue
 
         # Report to the server but allow failed reports to delay
         wld = [score[ii] - sent[ii] for ii in range(3)]

@@ -2,7 +2,7 @@ FROM python:3.10.0-buster
 
 RUN pip3 install Django==3.0.5 django-htmlmin django-ipware requests
 
-RUN git clone https://github.com/AndyGrant/OpenBench /OpenBench
+RUN git clone -b puct --depth 1 https://github.com/ianagbip1oti/OpenBench /OpenBench
 WORKDIR /OpenBench
 
 COPY config.py /OpenBench/OpenBench/config.py

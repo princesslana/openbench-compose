@@ -88,7 +88,7 @@ OPENBENCH_CONFIG = {
 
             'nps'       : 500000,
             'base'      : 'main',
-            'bounds'    : '[0.00, 5.00]',
+            'bounds'    : '[-1.50, 4.50]',
             'source'    : 'https://github.com/princesslana/princhess',
 
             'build'     : {
@@ -99,9 +99,9 @@ OPENBENCH_CONFIG = {
 
             'testmodes' : {
                 'stc'     : { 'threads' : 1, 'hash' : 128, 'timecontrol' : '10.0+0.1' },
-                'ltc'     : { 'threads' : 1, 'hash' : 256, 'timecontrol' : '60.0+0.6' },
+                'ltc'     : { 'threads' : 1, 'hash' : 256, 'timecontrol' : '60.0+1.0' },
                 'smpstc'  : { 'threads' : 2, 'hash' : 256, 'timecontrol' : '10.0+0.1' },
-                'smpltc'  : { 'threads' : 2, 'hash' : 512, 'timecontrol' : '60.0+0.6' },
+                'smpltc'  : { 'threads' : 2, 'hash' : 512, 'timecontrol' : '60.0+1.0' },
             },
         },
     },
